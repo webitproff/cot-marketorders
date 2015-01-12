@@ -98,6 +98,7 @@ if ($a == 'add')
 			
 			$options['code'] = $orderid;
 			$options['desc'] = $item['item_title'];
+			$options['redirect'] = $cfg['mainurl'].'/'.cot_url('marketorders', 'id='.$orderid);
 			
 			/* === Hook === */
 			foreach (cot_getextplugins('marketorders.neworder.add.done') as $pl)

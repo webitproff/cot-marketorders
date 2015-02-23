@@ -101,7 +101,7 @@ if ($a == 'add')
 			
 			if ($db->fieldExists($db_payments, "pay_redirect"))
 			{
-				$options['redirect'] = $cfg['mainurl'].'/'.cot_url('marketorders', 'id='.$orderid);
+				$options['redirect'] = $cfg['mainurl'].'/'.cot_url('marketorders', 'id='.$orderid, '', true);
 			}
 			
 			/* === Hook === */

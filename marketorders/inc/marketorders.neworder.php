@@ -96,12 +96,17 @@ if ($a == 'add')
 		{
 			$orderid = $db->lastInsertId();
 			
+			if(!empty($rorder['order_email']) && $usr['id'] == 0)
+			{
+				$key = sha1($rorder['order_email'].'&'.$orderid);
+			}
+
 			$options['code'] = $orderid;
 			$options['desc'] = $item['item_title'];
 			
 			if ($db->fieldExists($db_payments, "pay_redirect"))
 			{
-				$options['redirect'] = $cfg['mainurl'].'/'.cot_url('marketorders', 'id='.$orderid, '', true);
+				$options['redirect'] = $cfg['mainurl'].'/'.cot_url('marketorders', 'id='.$orderid.'&key='.$key, '', true);
 			}
 			
 			/* === Hook === */

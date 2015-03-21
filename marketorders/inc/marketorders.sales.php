@@ -66,7 +66,7 @@ switch($status)
 		break;
 	
 	default:
-		
+		$where['order_status'] = "o.order_status!='new'";
 		break;
 }
 

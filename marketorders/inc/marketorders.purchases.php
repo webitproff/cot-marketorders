@@ -16,7 +16,7 @@ $id = cot_import('id', 'G', 'INT');
 $status = cot_import('status', 'G', 'ALP');
 
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('plug', 'marketorders');
-cot_block($usr['auth_read']);
+cot_block($usr['id'] > 0 && $usr['auth_read']);
 
 if($cfg['plugin']['marketorders']['ordersperpage'] > 0)
 {

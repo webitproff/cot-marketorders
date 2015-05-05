@@ -11,7 +11,7 @@ require_once cot_incfile('market', 'module');
 require_once cot_incfile('marketorders', 'plug');
 
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('plug', 'marketorders', 'RWA');
-cot_block($usr['auth_write']);
+cot_block($usr['auth_read']);
 
 $m = cot_import('m','G','ALP');
 $id = cot_import('id','G','INT');

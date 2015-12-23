@@ -139,5 +139,12 @@ foreach ($marketorders as $marketorder)
 		$rorder['order_status'] = 'done';
 
 		$db->update($db_market_orders, $rorder, "order_id=".$marketorder['order_id']);
+		
+		/* === Hook === */
+		foreach (cot_getextplugins('marketorders.order.done') as $pl)
+		{
+			include $pl;
+		}
+		/* ===== */
 	}
 }

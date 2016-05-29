@@ -97,6 +97,14 @@ if ($a == 'add')
 			'sitename' => $cfg['maintitle'],
 			'link' => COT_ABSOLUTE_URL . cot_url('marketorders', "id=" . $marketorder['order_id'], '', true)
 		));
+
+		/* === Hook === */
+		foreach (cot_getextplugins('marketorders.addclaim.done') as $pl)
+		{
+			include $pl;
+		}
+		/* ===== */
+
 		cot_mail ($cfg['adminemail'], $rsubject, $rbody);
 
 		cot_redirect(cot_url('marketorders', 'm=order&id=' . $id, '', true));

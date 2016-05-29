@@ -100,6 +100,13 @@ if($marketorder['order_status'] == 'claim')
 		"CLAIM_DATE" => $marketorder['order_claim'],
 		"CLAIM_TEXT" => $marketorder['order_claimtext'],
 	));
+
+	/* === Hook === */
+	foreach (cot_getextplugins('marketorders.order.claim') as $pl)
+	{
+		include $pl;
+	}
+	/* ===== */
 	
 	if($usr['isadmin'])
 	{
@@ -163,6 +170,14 @@ if($marketorder['order_status'] == 'claim')
 					'sitename' => $cfg['maintitle'],
 					'link' => COT_ABSOLUTE_URL . cot_url('marketorders', "id=" . $marketorder['order_id'], '', true)
 				));
+
+				/* === Hook === */
+				foreach (cot_getextplugins('marketorders.order.acceptclaim.done') as $pl)
+				{
+					include $pl;
+				}
+				/* ===== */
+
 				cot_mail ($customer['user_email'], $rsubject, $rbody);
 
 				cot_redirect(cot_url('marketorders', 'm=order&id=' . $id, '', true));
@@ -191,6 +206,14 @@ if($marketorder['order_status'] == 'claim')
 					'sitename' => $cfg['maintitle'],
 					'link' => COT_ABSOLUTE_URL . cot_url('marketorders', "id=" . $marketorder['order_id'], '', true)
 				));
+
+				/* === Hook === */
+				foreach (cot_getextplugins('marketorders.order.cancelclaim.done') as $pl)
+				{
+					include $pl;
+				}
+				/* ===== */
+
 				cot_mail ($customer['user_email'], $rsubject, $rbody);
 			}
 			

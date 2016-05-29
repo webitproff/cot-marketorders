@@ -61,7 +61,7 @@ if ($a == 'add')
 	}
 	/* ===== */
 
-	cot_check(empty($rorder['order_count']), 'marketorders_neworder_error_count', 'rcount');
+	//cot_check(empty($rorder['order_count']), 'marketorders_neworder_error_count', 'rcount');
 	if (!cot_check_email($email) && $usr['id'] == 0) cot_error('aut_emailtooshort', 'remail');
 	
 	if(!empty($email) && $usr['id'] == 0)

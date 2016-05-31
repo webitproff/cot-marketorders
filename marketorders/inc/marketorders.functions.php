@@ -16,10 +16,8 @@ defined('COT_CODE') or die('Wrong URL');
 require_once cot_langfile('marketorders', 'plug');
 require_once cot_incfile('forms');
 
-// Global variables
-global $db_market_orders, $db_x;
-$db_market_orders = (isset($db_market_orders)) ? $db_market_orders : $db_x . 'market_orders';
-
+// Tables and extras
+cot::$db->registerTable('market_orders');
 
 function marketorders_file_download($filename, $mimetype='application/octet-stream') {
 	if (!file_exists($filename)) die('Файл не найден');

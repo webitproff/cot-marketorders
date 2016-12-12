@@ -6,7 +6,7 @@
  * Name=Market orders
  * Category=Payments
  * Description=Заказы в магазине
- * Version=1.0.5
+ * Version=1.0.6
  * Date=
  * Author=CMSWorks Team
  * Copyright=Copyright (c) CMSWorks.ru
@@ -23,6 +23,7 @@
  * tax=02:string::10:Selling commission
  * ordersperpage=03:select:0,1,2,3,4,5,10,15,20,25,30,35,40,45,50:20:Число заказов на странице
  * filepath=04:string::datas/marketfiles:File path
+ * adminid=04:string::0:Admin id
  * [END_COT_EXT_CONFIG]
  */
 

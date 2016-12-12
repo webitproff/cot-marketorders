@@ -18,6 +18,7 @@ defined('COT_CODE') or die('Wrong URL.');
 $L['cfg_warranty'] = array('Гарантийный срок (дней)');
 $L['cfg_tax'] = array('Комиссия за продажи (%)');
 $L['cfg_ordersperpage'] = array('Число заказов на странице');
+$L['cfg_adminid'] = array('ID пользователя для зачисления комиссии');
 
 $L['marketorders'] = 'Заказы в магазине';
 
@@ -53,6 +54,7 @@ $L['marketorders_paid'] = 'Дата оплаты';
 $L['marketorders_warranty'] = 'Гарантийный срок';
 
 $L['marketorders_done_payments_desc'] = 'Выплата по заказу № {$order_id} ({$product_title})';
+$L['marketorders_tax_payments_desc'] = 'Доход с продажи по заказу № {$order_id} ({$product_title})';
 
 $L['marketorders_paid_mail_toseller_header'] = 'Новый заказ № {$order_id} ({$product_title})';
 $L['marketorders_paid_mail_toseller_body'] = 'Поздравляем! Пользователь {$user_name}, оформил и оплатил заказ № {$order_id} ([{$product_id}] {$product_title}). Если у покупателя не будет претензий к приобретенному товару/услуге, то по истечению гарантийного срока ({$warranty} дней) на ваш счет поступит оплата в размере {$summ} с учетом комиссии сервиса {$tax}%. Подробности заказа смотрите по ссылке:  {$link}';

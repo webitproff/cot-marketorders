@@ -138,7 +138,27 @@ foreach ($marketorders as $marketorder)
 		$rorder['order_done'] = $sys['now'];
 		$rorder['order_status'] = 'done';
 
-		$db->update($db_market_orders, $rorder, "order_id=".$marketorder['order_id']);
+		if($db->update($db_market_orders, $rorder, "order_id=".$marketorder['order_id'])) 
+		{
+			if($cfg['plugin']['marketorders']['adminid'] > 0 && $cfg['plugin']['marketorders']['tax'] > 0)
+			{
+				$payinfo['pay_userid'] = $cfg['plugin']['marketorders']['adminid'];
+				$payinfo['pay_area'] = 'balance';
+				$payinfo['pay_code'] = 'marketorders:'.$pay['pay_id'];
+				$payinfo['pay_summ'] = $marketorder['order_cost']*$cfg['plugin']['marketorders']['tax']/100;
+				$payinfo['pay_cdate'] = $sys['now'];
+				$payinfo['pay_pdate'] = $sys['now'];
+				$payinfo['pay_adate'] = $sys['now'];
+				$payinfo['pay_status'] = 'done';
+				$payinfo['pay_desc'] = cot_rc($L['marketorders_tax_payments_desc'], 
+					array(
+						'product_title' => $marketorder['item_title'],
+						'order_id' => $marketorder['order_id']
+					);
+
+				$db->insert($db_payments, $payinfo);
+			}
+		}
 		
 		/* === Hook === */
 		foreach (cot_getextplugins('marketorders.order.done') as $pl)

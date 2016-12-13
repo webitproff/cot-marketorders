@@ -154,7 +154,8 @@ foreach ($marketorders as $marketorder)
 					array(
 						'product_title' => $marketorder['item_title'],
 						'order_id' => $marketorder['order_id']
-					);
+					)
+				);
 
 				$db->insert($db_payments, $payinfo);
 			}

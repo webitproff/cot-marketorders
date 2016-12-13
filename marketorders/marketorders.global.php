@@ -144,7 +144,7 @@ foreach ($marketorders as $marketorder)
 			{
 				$payinfo['pay_userid'] = $cfg['plugin']['marketorders']['adminid'];
 				$payinfo['pay_area'] = 'balance';
-				$payinfo['pay_code'] = 'marketorders:'.$pay['pay_id'];
+				$payinfo['pay_code'] = 'marketorders:'.$marketorder['order_id'];
 				$payinfo['pay_summ'] = $marketorder['order_cost']*$cfg['plugin']['marketorders']['tax']/100;
 				$payinfo['pay_cdate'] = $sys['now'];
 				$payinfo['pay_pdate'] = $sys['now'];
